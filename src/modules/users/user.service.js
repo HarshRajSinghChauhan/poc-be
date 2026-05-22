@@ -87,6 +87,15 @@ const deleteUser = async ({id}) => {
     }
 }
 
+const getSummary = async () => {
+    const result= await userRepository.getSummary();
+    return {
+        total_users: result.total_users,
+        total_admins: result.total_admins,
+        total_notes: result.total_customers
+    };
+};
+
 module.exports = {
-    registerUser, loginUser, updateUserRole, getAllUsers, deleteUser
+    registerUser, loginUser, updateUserRole, getAllUsers, deleteUser, getSummary
 }

@@ -32,6 +32,18 @@ const deleteUser = async (id) => {
     )
     return result.rows[0];
 }
+
+const getSummary = async () => {
+    const result = await client.query(`
+        SELECT
+            COUNT(*) AS total_users,
+            COUNT(CASE WHEN role = 'admin' THEN 1 END) AS total_admins,
+            COUNT(CASE WHEN role = 'customer' THEN 1 END) AS total_customers
+        FROM users
+    `);
+    return result.rows[0];
+};
+
 module.exports = {
-    registerUser, findUserByEmail, updateUserRole, getAllUsers, deleteUser
+    registerUser, findUserByEmail, updateUserRole, getAllUsers, deleteUser, getSummary
 } 
