@@ -90,6 +90,21 @@ const deleteUser = async (req, res, next) => {
     }
 }
 
+const getSummary = async (req, res, next) => {
+    try {
+        const result = await userService.getSummary(req.user.id);
+        res.status(200).json({
+            success: true,
+            data: result,
+            message: "summary fetched successfully"
+        })
+    } catch (err) {
+        res.status(400).json({
+            success: false,
+            message: err.message
+        })
+    }
+};
 module.exports = {
-    registerUser, loginUser, updateUserRole, getAllUsers, deleteUser
+    registerUser, loginUser, updateUserRole, getAllUsers, deleteUser, getSummary
 }
