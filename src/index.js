@@ -5,7 +5,7 @@ const userRoutes = require('./modules/users/user.routes');
 const notesRoutes = require('./modules/notes/notes.routes');
 const cors = require('cors');  
 const app = express();
-const port = 4001;
+const port = process.env.PORT || 4001;
 
 app.use(express.json());
 app.use(
