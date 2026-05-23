@@ -92,7 +92,7 @@ const getSummary = async () => {
     return {
         total_users: result.total_users,
         total_admins: result.total_admins,
-        total_notes: result.total_customers
+        total_notes: result.total_notes
     };
 };
 

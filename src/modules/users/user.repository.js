@@ -38,7 +38,7 @@ const getSummary = async () => {
         SELECT
             COUNT(*) AS total_users,
             COUNT(CASE WHEN role = 'admin' THEN 1 END) AS total_admins,
-            COUNT(CASE WHEN role = 'customer' THEN 1 END) AS total_customers
+            (SELECT COUNT(*) FROM notes) AS total_notes
         FROM users
     `);
     return result.rows[0];
